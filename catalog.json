@@ -1,6 +1,6 @@
 {
   "shop_name": "andrewimm_shop",
-  "tagline": "Цены как на FunPay · Roblox Studio, гайды, паки",
+  "tagline": "Скрипты Studio · гайды · паки · бандлы",
   "categories": [
     {
       "id": "scripts",
@@ -27,8 +27,8 @@
     {
       "id": "avatar_neon",
       "category": "avatars",
-      "title": "Пак: Neon Streetwear",
-      "description": "10 образов R15 + аксессуары в неоновом стиле.",
+      "title": "Neon Streetwear ×10",
+      "description": "10 неоновых образов R15 + инструкция сборки и палитры.",
       "icon": "👤",
       "price_stars": 16,
       "price_rub": 129,
@@ -37,8 +37,8 @@
     {
       "id": "avatar_anime",
       "category": "avatars",
-      "title": "Пак: Anime Vibe",
-      "description": "8 готовых аватаров + палитра цветов для кастома.",
+      "title": "Anime Vibe ×8",
+      "description": "8 аниме-образов, пастельные цвета, шаблоны для RP-ролей.",
       "icon": "🎭",
       "price_stars": 18,
       "price_rub": 149,
@@ -47,19 +47,29 @@
     {
       "id": "bundle_starter",
       "category": "bundles",
-      "title": "Starter Pack Roblox",
-      "description": "Clicker + DataStore + гайд Blox Fruits — скидка ~25% к цене по отдельности.",
+      "title": "Starter Pack",
+      "description": "Clicker + DataStore + гайд Blox Fruits. Экономия ~25%.",
       "icon": "📦",
       "price_stars": 38,
       "price_rub": 249,
       "price_usdt": 3.1
     },
     {
+      "id": "bundle_creator",
+      "category": "bundles",
+      "title": "Creator Pack",
+      "description": "Все 4 скрипта: Clicker, DataStore, UI, Game Pass Shop.",
+      "icon": "🎁",
+      "price_stars": 55,
+      "price_rub": 399,
+      "price_usdt": 4.99
+    },
+    {
       "id": "guide_blox",
       "category": "guides",
-      "title": "Гайд: старт в Blox Fruits",
-      "description": "PDF + чек-лист: прокачка, фарм, выбор фрукта для новичков.",
-      "icon": "📖",
+      "title": "Blox Fruits — старт 2025",
+      "description": "Фрукты для новичка, прокачка 1–700, фарм белли, чек-лист на день.",
+      "icon": "🍎",
       "price_stars": 5,
       "price_rub": 39,
       "price_usdt": 0.5
@@ -67,18 +77,28 @@
     {
       "id": "guide_tower",
       "category": "guides",
-      "title": "Гайд: Tower Defense meta",
-      "description": "Таблица юнитов, волны, лучшие расстановки на 2025.",
-      "icon": "📘",
+      "title": "Tower Defense — meta",
+      "description": "Таблица башен по волнам, экономика, Hardcore и ивенты.",
+      "icon": "🗼",
       "price_stars": 6,
       "price_rub": 49,
       "price_usdt": 0.6
     },
     {
+      "id": "guide_brookhaven",
+      "category": "guides",
+      "title": "Brookhaven — RP гайд",
+      "description": "Роли, заработок, донат-пассы, этикет RP без бана.",
+      "icon": "🏠",
+      "price_stars": 5,
+      "price_rub": 35,
+      "price_usdt": 0.45
+    },
+    {
       "id": "clicker",
       "category": "scripts",
-      "title": "Clicker System",
-      "description": "Система кликов, множители и настройка геймплея под Bubble Gum-стиль.",
+      "title": "Clicker System Pro",
+      "description": "Клики, leaderstats, множители за ребирт. Готовый серверный скрипт + инструкция.",
       "icon": "⚡",
       "price_stars": 22,
       "price_rub": 189,
@@ -87,8 +107,8 @@
     {
       "id": "save",
       "category": "scripts",
-      "title": "Лидерборд + DataStore",
-      "description": "Сохранение валюты и статов игрока при выходе из плейса.",
+      "title": "DataStore + Лидерборд",
+      "description": "Сохранение Money и Level, автосейв каждые 2 мин, загрузка при входе.",
       "icon": "💾",
       "price_stars": 11,
       "price_rub": 89,
@@ -97,12 +117,22 @@
     {
       "id": "gui",
       "category": "scripts",
-      "title": "UI: Neon Bubble",
-      "description": "Неоновый интерфейс для кнопок, инвентаря и внутриигрового магазина.",
+      "title": "Neon Bubble UI",
+      "description": "ScreenGui в неоновом стиле: рамка, кнопка магазина, легко кастомить цвета.",
       "icon": "💎",
       "price_stars": 28,
       "price_rub": 229,
       "price_usdt": 2.85
+    },
+    {
+      "id": "shop",
+      "category": "scripts",
+      "title": "Магазин Game Pass",
+      "description": "Шаблон покупки VIP через Game Pass + обработка на сервере.",
+      "icon": "🛒",
+      "price_stars": 15,
+      "price_rub": 119,
+      "price_usdt": 1.49
     }
   ]
 }
