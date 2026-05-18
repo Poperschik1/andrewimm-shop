@@ -167,8 +167,9 @@
         }
 
         .cart-total-value {
-            font-size: 20px;
+            font-size: 16px;
             font-weight: 700;
+            line-height: 1.35;
         }
     </style>
 </head>
@@ -176,7 +177,7 @@
     <div class="hero">
         <span class="badge">Roblox Studio</span>
         <h1>andrewimm_shop</h1>
-        <p>Готовые скрипты и UI-паки. Оплата — Telegram Stars ⭐</p>
+        <p>Оплата: ⭐ Stars · 💳 карта · 🪙 USDT</p>
     </div>
 
     <div class="product-card">
@@ -186,7 +187,7 @@
         </div>
         <div class="product-desc">Клики, множители и настройка геймплея под Bubble Gum-стиль.</div>
         <div class="product-footer">
-            <div class="price">50 ⭐</div>
+            <div class="price">50 ⭐ · 299 ₽</div>
             <div class="counter">
                 <button type="button" data-action="minus" data-item="clicker" aria-label="Меньше">−</button>
                 <span id="clicker-qty">0</span>
@@ -202,7 +203,7 @@
         </div>
         <div class="product-desc">Сохранение валюты и статов игрока при выходе из плейса.</div>
         <div class="product-footer">
-            <div class="price">30 ⭐</div>
+            <div class="price">30 ⭐ · 199 ₽</div>
             <div class="counter">
                 <button type="button" data-action="minus" data-item="save" aria-label="Меньше">−</button>
                 <span id="save-qty">0</span>
@@ -218,7 +219,7 @@
         </div>
         <div class="product-desc">Неоновый интерфейс для кнопок, инвентаря и внутриигрового магазина.</div>
         <div class="product-footer">
-            <div class="price">75 ⭐</div>
+            <div class="price">75 ⭐ · 449 ₽</div>
             <div class="counter">
                 <button type="button" data-action="minus" data-item="gui" aria-label="Меньше">−</button>
                 <span id="gui-qty">0</span>
@@ -237,11 +238,24 @@
         tg.ready();
         tg.expand();
 
-        const PRICES = { clicker: 50, save: 30, gui: 75 };
+        const PRICES = {
+            clicker: { stars: 50, rub: 299, usdt: 4.99 },
+            save: { stars: 30, rub: 199, usdt: 2.99 },
+            gui: { stars: 75, rub: 449, usdt: 6.99 },
+        };
         const order = { clicker: 0, save: 0, gui: 0 };
 
-        function getTotal() {
-            return Object.keys(order).reduce((sum, key) => sum + order[key] * PRICES[key], 0);
+        function getTotals() {
+            return Object.keys(order).reduce(
+                (acc, key) => {
+                    const q = order[key];
+                    acc.stars += q * PRICES[key].stars;
+                    acc.rub += q * PRICES[key].rub;
+                    acc.usdt += q * PRICES[key].usdt;
+                    return acc;
+                },
+                { stars: 0, rub: 0, usdt: 0 }
+            );
         }
 
         function updateUI() {
@@ -249,10 +263,12 @@
                 const el = document.getElementById(`${key}-qty`);
                 if (el) el.textContent = order[key];
             }
-            document.getElementById('cart-total').textContent = `${getTotal()} ⭐`;
+            const t = getTotals();
+            document.getElementById('cart-total').innerHTML =
+                `${t.stars} ⭐<br>${t.rub} ₽ · ${t.usdt.toFixed(2)} USDT`;
 
-            if (getTotal() > 0) {
-                tg.MainButton.setText(`Оформить · ${getTotal()} ⭐`);
+            if (t.stars > 0) {
+                tg.MainButton.setText(`Оформить заказ`);
                 tg.MainButton.show();
             } else {
                 tg.MainButton.hide();
@@ -276,7 +292,7 @@
         });
 
         function sendDataToBot() {
-            if (getTotal() === 0) {
+            if (getTotals().stars === 0) {
                 tg.showAlert('Добавьте товары кнопкой «+»');
                 return;
             }
