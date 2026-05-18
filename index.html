@@ -47,29 +47,88 @@
             font-weight: 700;
         }
         .hero p { margin: 8px 0 0; font-size: 13px; color: var(--hint); line-height: 1.5; }
+        .cats-wrap {
+            position: relative;
+            margin-bottom: 8px;
+        }
+        .cats-wrap::before,
+        .cats-wrap::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 20px;
+            width: 28px;
+            z-index: 2;
+            pointer-events: none;
+        }
+        .cats-wrap::before {
+            left: 0;
+            background: linear-gradient(90deg, var(--bg), transparent);
+        }
+        .cats-wrap::after {
+            right: 0;
+            background: linear-gradient(270deg, var(--bg), transparent);
+        }
+        .cats-scroll {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .cat-nav {
+            flex-shrink: 0;
+            width: 36px;
+            height: 36px;
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            background: var(--card);
+            color: var(--accent);
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            line-height: 1;
+        }
+        .cat-nav:active { transform: scale(0.94); }
         .cats {
             display: flex;
             gap: 8px;
             overflow-x: auto;
-            padding-bottom: 12px;
+            overflow-y: hidden;
+            flex: 1;
+            padding: 4px 2px 16px;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
             scrollbar-width: none;
+            touch-action: pan-x;
         }
         .cats::-webkit-scrollbar { display: none; }
         .cat-btn {
             flex-shrink: 0;
+            scroll-snap-align: start;
             border: 1px solid var(--border);
             background: var(--card);
             color: var(--text);
-            padding: 8px 14px;
+            padding: 10px 16px;
             border-radius: 999px;
             font-size: 13px;
             font-weight: 600;
             cursor: pointer;
+            white-space: nowrap;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
         }
         .cat-btn.active {
             background: var(--accent);
             color: var(--accent-text);
             border-color: transparent;
+            box-shadow: 0 4px 14px color-mix(in srgb, var(--accent) 35%, transparent);
+        }
+        .cats-hint {
+            text-align: center;
+            font-size: 11px;
+            color: var(--hint);
+            margin: -8px 0 12px;
+            letter-spacing: 0.02em;
         }
         .product-card {
             background: var(--card);
@@ -120,7 +179,14 @@
         <h1 id="shop-name">andrewimm_shop</h1>
         <p id="shop-tagline">Загрузка…</p>
     </div>
-    <div class="cats" id="categories"></div>
+    <div class="cats-wrap">
+        <div class="cats-scroll">
+            <button type="button" class="cat-nav" id="cat-prev" aria-label="Категории назад">‹</button>
+            <div class="cats" id="categories"></div>
+            <button type="button" class="cat-nav" id="cat-next" aria-label="Категории вперёд">›</button>
+        </div>
+    </div>
+    <p class="cats-hint">← свайпните или нажмите стрелки →</p>
     <div id="products"><p class="loading">Загрузка каталога…</p></div>
     <div class="cart-bar">
         <div class="cart-total-label">Итого</div>
@@ -155,23 +221,43 @@
             }
         }
 
+        const catsEl = () => document.getElementById('categories');
+
+        function scrollCatsBy(dx) {
+            const el = catsEl();
+            if (el) el.scrollBy({ left: dx, behavior: 'smooth' });
+        }
+
+        function scrollActiveCatIntoView() {
+            const el = catsEl();
+            if (!el) return;
+            const active = el.querySelector('.cat-btn.active');
+            if (active) {
+                active.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+            }
+        }
+
         function renderCategories() {
-            const el = document.getElementById('categories');
+            const el = catsEl();
             const cats = catalog.categories || [];
             el.innerHTML = '';
             const allBtn = document.createElement('button');
             allBtn.className = 'cat-btn active';
+            allBtn.type = 'button';
             allBtn.textContent = '🏪 Все';
             allBtn.onclick = () => setCategory('all');
             el.appendChild(allBtn);
             cats.forEach(c => {
                 const btn = document.createElement('button');
+                btn.type = 'button';
                 btn.className = 'cat-btn';
                 btn.textContent = `${c.icon} ${c.name}`;
                 btn.dataset.id = c.id;
                 btn.onclick = () => setCategory(c.id);
                 el.appendChild(btn);
             });
+            document.getElementById('cat-prev').onclick = () => scrollCatsBy(-160);
+            document.getElementById('cat-next').onclick = () => scrollCatsBy(160);
         }
 
         function setCategory(id) {
@@ -180,6 +266,7 @@
                 const bid = btn.dataset.id || 'all';
                 btn.classList.toggle('active', (id === 'all' && !btn.dataset.id) || bid === id);
             });
+            scrollActiveCatIntoView();
             renderProducts();
         }
 

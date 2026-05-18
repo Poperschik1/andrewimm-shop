@@ -1,6 +1,6 @@
 {
   "shop_name": "andrewimm_shop",
-  "tagline": "Эксклюзивный магазин: Roblox Studio, гайды, паки",
+  "tagline": "Цены как на FunPay · Roblox Studio, гайды, паки",
   "categories": [
     {
       "id": "scripts",
@@ -30,9 +30,9 @@
       "title": "Пак: Neon Streetwear",
       "description": "10 образов R15 + аксессуары в неоновом стиле.",
       "icon": "👤",
-      "price_stars": 40,
-      "price_rub": 249,
-      "price_usdt": 3.49
+      "price_stars": 16,
+      "price_rub": 129,
+      "price_usdt": 1.6
     },
     {
       "id": "avatar_anime",
@@ -40,19 +40,19 @@
       "title": "Пак: Anime Vibe",
       "description": "8 готовых аватаров + палитра цветов для кастома.",
       "icon": "🎭",
-      "price_stars": 45,
-      "price_rub": 279,
-      "price_usdt": 3.99
+      "price_stars": 18,
+      "price_rub": 149,
+      "price_usdt": 1.85
     },
     {
       "id": "bundle_starter",
       "category": "bundles",
       "title": "Starter Pack Roblox",
-      "description": "Clicker + DataStore + гайд Blox Fruits — выгоднее на 30%.",
+      "description": "Clicker + DataStore + гайд Blox Fruits — скидка ~25% к цене по отдельности.",
       "icon": "📦",
-      "price_stars": 99,
-      "price_rub": 599,
-      "price_usdt": 8.99
+      "price_stars": 38,
+      "price_rub": 249,
+      "price_usdt": 3.1
     },
     {
       "id": "guide_blox",
@@ -60,9 +60,9 @@
       "title": "Гайд: старт в Blox Fruits",
       "description": "PDF + чек-лист: прокачка, фарм, выбор фрукта для новичков.",
       "icon": "📖",
-      "price_stars": 25,
-      "price_rub": 149,
-      "price_usdt": 1.99
+      "price_stars": 5,
+      "price_rub": 39,
+      "price_usdt": 0.5
     },
     {
       "id": "guide_tower",
@@ -70,9 +70,9 @@
       "title": "Гайд: Tower Defense meta",
       "description": "Таблица юнитов, волны, лучшие расстановки на 2025.",
       "icon": "📘",
-      "price_stars": 35,
-      "price_rub": 199,
-      "price_usdt": 2.49
+      "price_stars": 6,
+      "price_rub": 49,
+      "price_usdt": 0.6
     },
     {
       "id": "clicker",
@@ -80,9 +80,9 @@
       "title": "Clicker System",
       "description": "Система кликов, множители и настройка геймплея под Bubble Gum-стиль.",
       "icon": "⚡",
-      "price_stars": 50,
-      "price_rub": 299,
-      "price_usdt": 4.99
+      "price_stars": 22,
+      "price_rub": 189,
+      "price_usdt": 2.35
     },
     {
       "id": "save",
@@ -90,9 +90,9 @@
       "title": "Лидерборд + DataStore",
       "description": "Сохранение валюты и статов игрока при выходе из плейса.",
       "icon": "💾",
-      "price_stars": 30,
-      "price_rub": 199,
-      "price_usdt": 2.99
+      "price_stars": 11,
+      "price_rub": 89,
+      "price_usdt": 1.1
     },
     {
       "id": "gui",
@@ -100,9 +100,9 @@
       "title": "UI: Neon Bubble",
       "description": "Неоновый интерфейс для кнопок, инвентаря и внутриигрового магазина.",
       "icon": "💎",
-      "price_stars": 75,
-      "price_rub": 449,
-      "price_usdt": 6.99
+      "price_stars": 28,
+      "price_rub": 229,
+      "price_usdt": 2.85
     }
   ]
 }
