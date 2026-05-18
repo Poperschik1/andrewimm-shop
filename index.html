@@ -17,23 +17,16 @@
             --accent-text: var(--tg-theme-button-text-color, #fff);
             --border: color-mix(in srgb, var(--text) 12%, transparent);
         }
-
         * { box-sizing: border-box; }
-
         body {
             margin: 0;
             font-family: 'Inter', system-ui, sans-serif;
             background: var(--bg);
             color: var(--text);
-            padding: 16px 16px 100px;
+            padding: 16px 16px 110px;
             min-height: 100vh;
         }
-
-        .hero {
-            text-align: center;
-            padding: 8px 0 24px;
-        }
-
+        .hero { text-align: center; padding: 8px 0 16px; }
         .badge {
             display: inline-block;
             font-size: 11px;
@@ -46,250 +39,211 @@
             border-radius: 999px;
             margin-bottom: 10px;
         }
-
         .hero h1 {
             margin: 0;
-            font-size: 28px;
+            font-size: 26px;
             font-weight: 700;
-            background: linear-gradient(135deg, var(--text), var(--hint));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
         }
-
-        .hero p {
-            margin: 8px 0 0;
-            font-size: 14px;
-            color: var(--hint);
-            line-height: 1.5;
+        .hero p { margin: 8px 0 0; font-size: 13px; color: var(--hint); line-height: 1.5; }
+        .cats {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            padding-bottom: 12px;
+            scrollbar-width: none;
         }
-
+        .cats::-webkit-scrollbar { display: none; }
+        .cat-btn {
+            flex-shrink: 0;
+            border: 1px solid var(--border);
+            background: var(--card);
+            color: var(--text);
+            padding: 8px 14px;
+            border-radius: 999px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        .cat-btn.active {
+            background: var(--accent);
+            color: var(--accent-text);
+            border-color: transparent;
+        }
         .product-card {
             background: var(--card);
             border: 1px solid var(--border);
             border-radius: 16px;
             padding: 16px;
             margin-bottom: 12px;
-            transition: transform 0.15s ease;
         }
-
-        .product-card:active { transform: scale(0.99); }
-
-        .product-top {
-            display: flex;
-            gap: 12px;
-            align-items: flex-start;
-        }
-
+        .product-top { display: flex; gap: 12px; align-items: flex-start; }
         .product-icon {
-            width: 44px;
-            height: 44px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            width: 44px; height: 44px; border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
             font-size: 22px;
             background: color-mix(in srgb, var(--accent) 18%, transparent);
             flex-shrink: 0;
         }
-
-        .product-title {
-            font-size: 16px;
-            font-weight: 600;
-            line-height: 1.3;
-        }
-
-        .product-desc {
-            font-size: 13px;
-            color: var(--hint);
-            line-height: 1.45;
-            margin: 10px 0 14px;
-        }
-
-        .product-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .price {
-            font-size: 15px;
-            font-weight: 700;
-            color: var(--accent);
-        }
-
+        .product-title { font-size: 16px; font-weight: 600; line-height: 1.3; }
+        .product-desc { font-size: 13px; color: var(--hint); line-height: 1.45; margin: 10px 0 14px; }
+        .product-footer { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+        .price { font-size: 14px; font-weight: 700; color: var(--accent); line-height: 1.3; }
         .counter {
-            display: flex;
-            align-items: center;
+            display: flex; align-items: center;
             background: color-mix(in srgb, var(--text) 6%, transparent);
-            border-radius: 12px;
-            padding: 4px;
+            border-radius: 12px; padding: 4px;
         }
-
         .counter button {
-            width: 36px;
-            height: 36px;
-            border: none;
-            border-radius: 10px;
+            width: 36px; height: 36px; border: none; border-radius: 10px;
             background: color-mix(in srgb, var(--accent) 25%, transparent);
-            color: var(--accent);
-            font-size: 20px;
-            font-weight: 600;
-            cursor: pointer;
+            color: var(--accent); font-size: 20px; font-weight: 600; cursor: pointer;
         }
-
-        .counter button:active {
-            background: color-mix(in srgb, var(--accent) 45%, transparent);
-        }
-
-        .counter span {
-            min-width: 28px;
-            text-align: center;
-            font-weight: 700;
-            font-size: 16px;
-        }
-
+        .counter span { min-width: 28px; text-align: center; font-weight: 700; }
         .cart-bar {
-            position: fixed;
-            left: 0;
-            right: 0;
-            bottom: 0;
+            position: fixed; left: 0; right: 0; bottom: 0;
             padding: 12px 16px calc(12px + env(safe-area-inset-bottom, 0px));
-            background: color-mix(in srgb, var(--card) 92%, transparent);
+            background: color-mix(in srgb, var(--card) 95%, transparent);
             backdrop-filter: blur(12px);
             border-top: 1px solid var(--border);
         }
-
-        .cart-total-label {
-            font-size: 12px;
-            color: var(--hint);
-        }
-
-        .cart-total-value {
-            font-size: 16px;
-            font-weight: 700;
-            line-height: 1.35;
-        }
+        .cart-total-label { font-size: 12px; color: var(--hint); }
+        .cart-total-value { font-size: 15px; font-weight: 700; line-height: 1.4; }
+        .loading, .error { text-align: center; color: var(--hint); padding: 40px 16px; }
+        .empty { text-align: center; color: var(--hint); padding: 24px; font-size: 14px; }
     </style>
 </head>
 <body>
     <div class="hero">
-        <span class="badge">Roblox Studio</span>
-        <h1>andrewimm_shop</h1>
-        <p>Оплата: ⭐ Stars · 💳 карта · 🪙 USDT</p>
+        <span class="badge">Эксклюзивный магазин</span>
+        <h1 id="shop-name">andrewimm_shop</h1>
+        <p id="shop-tagline">Загрузка…</p>
     </div>
-
-    <div class="product-card">
-        <div class="product-top">
-            <div class="product-icon">⚡</div>
-            <div class="product-title">Clicker System</div>
-        </div>
-        <div class="product-desc">Клики, множители и настройка геймплея под Bubble Gum-стиль.</div>
-        <div class="product-footer">
-            <div class="price">50 ⭐ · 299 ₽</div>
-            <div class="counter">
-                <button type="button" data-action="minus" data-item="clicker" aria-label="Меньше">−</button>
-                <span id="clicker-qty">0</span>
-                <button type="button" data-action="plus" data-item="clicker" aria-label="Больше">+</button>
-            </div>
-        </div>
-    </div>
-
-    <div class="product-card">
-        <div class="product-top">
-            <div class="product-icon">💾</div>
-            <div class="product-title">Лидерборд + DataStore</div>
-        </div>
-        <div class="product-desc">Сохранение валюты и статов игрока при выходе из плейса.</div>
-        <div class="product-footer">
-            <div class="price">30 ⭐ · 199 ₽</div>
-            <div class="counter">
-                <button type="button" data-action="minus" data-item="save" aria-label="Меньше">−</button>
-                <span id="save-qty">0</span>
-                <button type="button" data-action="plus" data-item="save" aria-label="Больше">+</button>
-            </div>
-        </div>
-    </div>
-
-    <div class="product-card">
-        <div class="product-top">
-            <div class="product-icon">💎</div>
-            <div class="product-title">UI: Neon Bubble</div>
-        </div>
-        <div class="product-desc">Неоновый интерфейс для кнопок, инвентаря и внутриигрового магазина.</div>
-        <div class="product-footer">
-            <div class="price">75 ⭐ · 449 ₽</div>
-            <div class="counter">
-                <button type="button" data-action="minus" data-item="gui" aria-label="Меньше">−</button>
-                <span id="gui-qty">0</span>
-                <button type="button" data-action="plus" data-item="gui" aria-label="Больше">+</button>
-            </div>
-        </div>
-    </div>
-
+    <div class="cats" id="categories"></div>
+    <div id="products"><p class="loading">Загрузка каталога…</p></div>
     <div class="cart-bar">
         <div class="cart-total-label">Итого</div>
         <div class="cart-total-value" id="cart-total">0 ⭐</div>
     </div>
-
     <script>
         const tg = window.Telegram.WebApp;
         tg.ready();
         tg.expand();
 
-        const PRICES = {
-            clicker: { stars: 50, rub: 299, usdt: 4.99 },
-            save: { stars: 30, rub: 199, usdt: 2.99 },
-            gui: { stars: 75, rub: 449, usdt: 6.99 },
-        };
-        const order = { clicker: 0, save: 0, gui: 0 };
+        const CATALOG_URL = new URL('catalog.json', window.location.href).href;
+        let catalog = null;
+        let activeCategory = 'all';
+        const order = {};
+
+        async function loadCatalog() {
+            try {
+                const res = await fetch(CATALOG_URL, { cache: 'no-store' });
+                if (!res.ok) throw new Error('catalog fetch failed');
+                catalog = await res.json();
+                document.getElementById('shop-name').textContent = catalog.shop_name || 'Shop';
+                document.getElementById('shop-tagline').textContent =
+                    catalog.tagline || '⭐ Stars · 💳 карта · 🪙 USDT';
+                catalog.products.forEach(p => { order[p.id] = 0; });
+                renderCategories();
+                renderProducts();
+                updateUI();
+            } catch (e) {
+                document.getElementById('products').innerHTML =
+                    '<p class="error">Не удалось загрузить каталог.<br>Обновите страницу.</p>';
+            }
+        }
+
+        function renderCategories() {
+            const el = document.getElementById('categories');
+            const cats = catalog.categories || [];
+            el.innerHTML = '';
+            const allBtn = document.createElement('button');
+            allBtn.className = 'cat-btn active';
+            allBtn.textContent = '🏪 Все';
+            allBtn.onclick = () => setCategory('all');
+            el.appendChild(allBtn);
+            cats.forEach(c => {
+                const btn = document.createElement('button');
+                btn.className = 'cat-btn';
+                btn.textContent = `${c.icon} ${c.name}`;
+                btn.dataset.id = c.id;
+                btn.onclick = () => setCategory(c.id);
+                el.appendChild(btn);
+            });
+        }
+
+        function setCategory(id) {
+            activeCategory = id;
+            document.querySelectorAll('.cat-btn').forEach(btn => {
+                const bid = btn.dataset.id || 'all';
+                btn.classList.toggle('active', (id === 'all' && !btn.dataset.id) || bid === id);
+            });
+            renderProducts();
+        }
+
+        function renderProducts() {
+            const wrap = document.getElementById('products');
+            const list = (catalog.products || []).filter(p =>
+                activeCategory === 'all' || p.category === activeCategory
+            );
+            if (!list.length) {
+                wrap.innerHTML = '<p class="empty">В этой категории пока нет товаров</p>';
+                return;
+            }
+            wrap.innerHTML = list.map(p => `
+                <div class="product-card" data-id="${p.id}">
+                    <div class="product-top">
+                        <div class="product-icon">${p.icon || '📦'}</div>
+                        <div class="product-title">${p.title}</div>
+                    </div>
+                    <div class="product-desc">${p.description}</div>
+                    <div class="product-footer">
+                        <div class="price">${p.price_stars} ⭐<br>${p.price_rub} ₽</div>
+                        <div class="counter">
+                            <button type="button" data-action="minus" data-item="${p.id}">−</button>
+                            <span id="${p.id}-qty">0</span>
+                            <button type="button" data-action="plus" data-item="${p.id}">+</button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+            wrap.querySelectorAll('.counter button').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const item = btn.dataset.item;
+                    const delta = btn.dataset.action === 'plus' ? 1 : -1;
+                    order[item] = Math.max(0, (order[item] || 0) + delta);
+                    if (tg.HapticFeedback) tg.HapticFeedback.impactOccurred('light');
+                    updateUI();
+                });
+            });
+        }
 
         function getTotals() {
-            return Object.keys(order).reduce(
-                (acc, key) => {
-                    const q = order[key];
-                    acc.stars += q * PRICES[key].stars;
-                    acc.rub += q * PRICES[key].rub;
-                    acc.usdt += q * PRICES[key].usdt;
-                    return acc;
-                },
-                { stars: 0, rub: 0, usdt: 0 }
-            );
+            if (!catalog) return { stars: 0, rub: 0, usdt: 0 };
+            return catalog.products.reduce((acc, p) => {
+                const q = order[p.id] || 0;
+                acc.stars += q * p.price_stars;
+                acc.rub += q * p.price_rub;
+                acc.usdt += q * p.price_usdt;
+                return acc;
+            }, { stars: 0, rub: 0, usdt: 0 });
         }
 
         function updateUI() {
-            for (const key of Object.keys(order)) {
-                const el = document.getElementById(`${key}-qty`);
-                if (el) el.textContent = order[key];
-            }
+            if (!catalog) return;
+            catalog.products.forEach(p => {
+                const el = document.getElementById(`${p.id}-qty`);
+                if (el) el.textContent = order[p.id] || 0;
+            });
             const t = getTotals();
             document.getElementById('cart-total').innerHTML =
                 `${t.stars} ⭐<br>${t.rub} ₽ · ${t.usdt.toFixed(2)} USDT`;
-
             if (t.stars > 0) {
-                tg.MainButton.setText(`Оформить заказ`);
+                tg.MainButton.setText('Оформить заказ');
                 tg.MainButton.show();
             } else {
                 tg.MainButton.hide();
             }
         }
-
-        function changeQty(item, delta) {
-            order[item] = Math.max(0, order[item] + delta);
-            if (tg.HapticFeedback) {
-                tg.HapticFeedback.impactOccurred('light');
-            }
-            updateUI();
-        }
-
-        document.querySelectorAll('.counter button').forEach((btn) => {
-            btn.addEventListener('click', () => {
-                const item = btn.dataset.item;
-                const delta = btn.dataset.action === 'plus' ? 1 : -1;
-                changeQty(item, delta);
-            });
-        });
 
         function sendDataToBot() {
             if (getTotals().stars === 0) {
@@ -297,7 +251,7 @@
                 return;
             }
             if (!tg.sendData) {
-                tg.showAlert('Откройте магазин через кнопку бота внизу экрана');
+                tg.showAlert('Откройте магазин через кнопку бота');
                 return;
             }
             tg.MainButton.showProgress();
@@ -309,7 +263,7 @@
         tg.MainButton.color = tg.themeParams.button_color || '#7c3aed';
         tg.MainButton.textColor = tg.themeParams.button_text_color || '#ffffff';
         tg.MainButton.hide();
-        updateUI();
+        loadCatalog();
     </script>
 </body>
 </html>
