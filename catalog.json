@@ -32,7 +32,8 @@
       "icon": "👤",
       "price_stars": 16,
       "price_rub": 129,
-      "price_usdt": 1.6
+      "price_usdt": 1.6,
+      "featured": false
     },
     {
       "id": "avatar_anime",
@@ -42,7 +43,8 @@
       "icon": "🎭",
       "price_stars": 18,
       "price_rub": 149,
-      "price_usdt": 1.85
+      "price_usdt": 1.85,
+      "featured": false
     },
     {
       "id": "bundle_starter",
@@ -52,7 +54,8 @@
       "icon": "📦",
       "price_stars": 38,
       "price_rub": 249,
-      "price_usdt": 3.1
+      "price_usdt": 3.1,
+      "featured": true
     },
     {
       "id": "bundle_creator",
@@ -62,7 +65,8 @@
       "icon": "🎁",
       "price_stars": 55,
       "price_rub": 399,
-      "price_usdt": 4.99
+      "price_usdt": 4.99,
+      "featured": false
     },
     {
       "id": "guide_blox",
@@ -72,7 +76,8 @@
       "icon": "🍎",
       "price_stars": 5,
       "price_rub": 39,
-      "price_usdt": 0.5
+      "price_usdt": 0.5,
+      "featured": false
     },
     {
       "id": "guide_tower",
@@ -82,7 +87,8 @@
       "icon": "🗼",
       "price_stars": 6,
       "price_rub": 49,
-      "price_usdt": 0.6
+      "price_usdt": 0.6,
+      "featured": false
     },
     {
       "id": "guide_brookhaven",
@@ -92,7 +98,8 @@
       "icon": "🏠",
       "price_stars": 5,
       "price_rub": 35,
-      "price_usdt": 0.45
+      "price_usdt": 0.45,
+      "featured": false
     },
     {
       "id": "clicker",
@@ -102,7 +109,8 @@
       "icon": "⚡",
       "price_stars": 22,
       "price_rub": 189,
-      "price_usdt": 2.35
+      "price_usdt": 2.35,
+      "featured": true
     },
     {
       "id": "save",
@@ -112,7 +120,8 @@
       "icon": "💾",
       "price_stars": 11,
       "price_rub": 89,
-      "price_usdt": 1.1
+      "price_usdt": 1.1,
+      "featured": false
     },
     {
       "id": "gui",
@@ -122,7 +131,8 @@
       "icon": "💎",
       "price_stars": 28,
       "price_rub": 229,
-      "price_usdt": 2.85
+      "price_usdt": 2.85,
+      "featured": false
     },
     {
       "id": "shop",
@@ -132,7 +142,8 @@
       "icon": "🛒",
       "price_stars": 15,
       "price_rub": 119,
-      "price_usdt": 1.49
+      "price_usdt": 1.49,
+      "featured": false
     }
   ]
 }

@@ -4,10 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
     <title>andrewimm_shop</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -26,128 +24,67 @@
             background: var(--bg);
             color: var(--text);
             padding: 16px 16px 110px;
-            min-height: 100vh;
         }
-        .hero { text-align: center; padding: 8px 0 16px; }
-        .badge {
+        .hero { text-align: center; padding: 8px 0 12px; }
+        .badge-shop {
             display: inline-block;
             font-size: 11px;
             font-weight: 600;
-            letter-spacing: 0.06em;
             text-transform: uppercase;
             color: var(--accent-text);
             background: linear-gradient(135deg, var(--accent), #a855f7);
             padding: 4px 10px;
             border-radius: 999px;
-            margin-bottom: 10px;
-        }
-        .hero h1 {
-            margin: 0;
-            font-size: 26px;
-            font-weight: 700;
-        }
-        .hero p { margin: 8px 0 0; font-size: 13px; color: var(--hint); line-height: 1.5; }
-        .cats-wrap {
-            position: relative;
             margin-bottom: 8px;
         }
-        .cats-wrap::before,
-        .cats-wrap::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            bottom: 20px;
-            width: 28px;
-            z-index: 2;
-            pointer-events: none;
+        .hero h1 { margin: 0; font-size: 26px; font-weight: 700; }
+        .hero p { margin: 8px 0 0; font-size: 13px; color: var(--hint); }
+        .cats-wrap { position: relative; margin-bottom: 4px; }
+        .cats-wrap::before, .cats-wrap::after {
+            content: ''; position: absolute; top: 0; bottom: 18px; width: 24px; z-index: 2; pointer-events: none;
         }
-        .cats-wrap::before {
-            left: 0;
-            background: linear-gradient(90deg, var(--bg), transparent);
-        }
-        .cats-wrap::after {
-            right: 0;
-            background: linear-gradient(270deg, var(--bg), transparent);
-        }
-        .cats-scroll {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
+        .cats-wrap::before { left: 36px; background: linear-gradient(90deg, var(--bg), transparent); }
+        .cats-wrap::after { right: 36px; background: linear-gradient(270deg, var(--bg), transparent); }
+        .cats-scroll { display: flex; align-items: center; gap: 6px; }
         .cat-nav {
-            flex-shrink: 0;
-            width: 36px;
-            height: 36px;
-            border: 1px solid var(--border);
-            border-radius: 50%;
-            background: var(--card);
-            color: var(--accent);
-            font-size: 18px;
-            font-weight: 700;
-            cursor: pointer;
-            line-height: 1;
+            flex-shrink: 0; width: 36px; height: 36px; border-radius: 50%;
+            border: 1px solid var(--border); background: var(--card);
+            color: var(--accent); font-size: 18px; font-weight: 700; cursor: pointer;
         }
-        .cat-nav:active { transform: scale(0.94); }
         .cats {
-            display: flex;
-            gap: 8px;
-            overflow-x: auto;
-            overflow-y: hidden;
-            flex: 1;
-            padding: 4px 2px 16px;
-            scroll-snap-type: x mandatory;
-            scroll-behavior: smooth;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: none;
-            touch-action: pan-x;
+            display: flex; gap: 8px; overflow-x: auto; flex: 1; padding: 4px 2px 14px;
+            scroll-snap-type: x mandatory; scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch; scrollbar-width: none;
         }
         .cats::-webkit-scrollbar { display: none; }
         .cat-btn {
-            flex-shrink: 0;
-            scroll-snap-align: start;
-            border: 1px solid var(--border);
-            background: var(--card);
-            color: var(--text);
-            padding: 10px 16px;
-            border-radius: 999px;
-            font-size: 13px;
-            font-weight: 600;
-            cursor: pointer;
-            white-space: nowrap;
-            user-select: none;
-            -webkit-tap-highlight-color: transparent;
+            flex-shrink: 0; scroll-snap-align: start;
+            border: 1px solid var(--border); background: var(--card);
+            color: var(--text); padding: 10px 16px; border-radius: 999px;
+            font-size: 13px; font-weight: 600; cursor: pointer; white-space: nowrap;
         }
         .cat-btn.active {
-            background: var(--accent);
-            color: var(--accent-text);
-            border-color: transparent;
-            box-shadow: 0 4px 14px color-mix(in srgb, var(--accent) 35%, transparent);
+            background: var(--accent); color: var(--accent-text); border-color: transparent;
         }
-        .cats-hint {
-            text-align: center;
-            font-size: 11px;
-            color: var(--hint);
-            margin: -8px 0 12px;
-            letter-spacing: 0.02em;
-        }
+        .cats-hint { text-align: center; font-size: 11px; color: var(--hint); margin: 0 0 12px; }
         .product-card {
-            background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 16px;
-            margin-bottom: 12px;
+            background: var(--card); border: 1px solid var(--border);
+            border-radius: 16px; padding: 16px; margin-bottom: 12px;
         }
         .product-top { display: flex; gap: 12px; align-items: flex-start; }
         .product-icon {
             width: 44px; height: 44px; border-radius: 12px;
             display: flex; align-items: center; justify-content: center;
-            font-size: 22px;
-            background: color-mix(in srgb, var(--accent) 18%, transparent);
-            flex-shrink: 0;
+            font-size: 22px; background: color-mix(in srgb, var(--accent) 18%, transparent);
         }
-        .product-title { font-size: 16px; font-weight: 600; line-height: 1.3; }
-        .product-desc { font-size: 13px; color: var(--hint); line-height: 1.45; margin: 10px 0 14px; }
-        .product-footer { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+        .product-title { font-size: 16px; font-weight: 600; line-height: 1.35; }
+        .badge-hot {
+            display: inline-block; font-size: 10px; font-weight: 700; color: #fff;
+            background: linear-gradient(135deg, #f59e0b, #ef4444);
+            padding: 2px 6px; border-radius: 6px; margin-left: 6px; vertical-align: middle;
+        }
+        .product-desc { font-size: 13px; color: var(--hint); margin: 10px 0 14px; line-height: 1.45; }
+        .product-footer { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
         .price { font-size: 14px; font-weight: 700; color: var(--accent); line-height: 1.3; }
         .counter {
             display: flex; align-items: center;
@@ -162,31 +99,39 @@
         .counter span { min-width: 28px; text-align: center; font-weight: 700; }
         .cart-bar {
             position: fixed; left: 0; right: 0; bottom: 0;
-            padding: 12px 16px calc(12px + env(safe-area-inset-bottom, 0px));
+            padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
             background: color-mix(in srgb, var(--card) 95%, transparent);
-            backdrop-filter: blur(12px);
-            border-top: 1px solid var(--border);
+            backdrop-filter: blur(12px); border-top: 1px solid var(--border);
         }
         .cart-total-label { font-size: 12px; color: var(--hint); }
         .cart-total-value { font-size: 15px; font-weight: 700; line-height: 1.4; }
-        .loading, .error { text-align: center; color: var(--hint); padding: 40px 16px; }
-        .empty { text-align: center; color: var(--hint); padding: 24px; font-size: 14px; }
+        .loading, .error, .empty { text-align: center; color: var(--hint); padding: 32px 12px; }
+        .search-wrap { margin-bottom: 12px; }
+        .search-wrap input {
+            width: 100%; padding: 11px 14px; border-radius: 12px;
+            border: 1px solid var(--border); background: var(--card);
+            color: var(--text); font-size: 14px; outline: none;
+        }
+        .search-wrap input::placeholder { color: var(--hint); }
     </style>
 </head>
 <body>
     <div class="hero">
-        <span class="badge">Эксклюзивный магазин</span>
+        <span class="badge-shop">Эксклюзивный магазин</span>
         <h1 id="shop-name">andrewimm_shop</h1>
         <p id="shop-tagline">Загрузка…</p>
     </div>
     <div class="cats-wrap">
         <div class="cats-scroll">
-            <button type="button" class="cat-nav" id="cat-prev" aria-label="Категории назад">‹</button>
+            <button type="button" class="cat-nav" id="cat-prev">‹</button>
             <div class="cats" id="categories"></div>
-            <button type="button" class="cat-nav" id="cat-next" aria-label="Категории вперёд">›</button>
+            <button type="button" class="cat-nav" id="cat-next">›</button>
         </div>
     </div>
-    <p class="cats-hint">← свайпните или нажмите стрелки →</p>
+    <p class="cats-hint">← свайпните категории или стрелки →</p>
+    <div class="search-wrap">
+        <input type="search" id="search" placeholder="🔍 Поиск по названию…" autocomplete="off">
+    </div>
     <div id="products"><p class="loading">Загрузка каталога…</p></div>
     <div class="cart-bar">
         <div class="cart-total-label">Итого</div>
@@ -196,94 +141,89 @@
         const tg = window.Telegram.WebApp;
         tg.ready();
         tg.expand();
-
-        const cacheVer = new URLSearchParams(location.search).get('v') || String(Date.now());
-        const CATALOG_URL = new URL(`catalog.json?v=${cacheVer}`, window.location.href).href;
-        let catalog = null;
-        let activeCategory = 'all';
-        const order = {};
+        const cacheVer = new URLSearchParams(location.search).get('v') || Date.now();
+        const CATALOG_URL = new URL(`catalog.json?v=${cacheVer}`, location.href).href;
+        let catalog = null, activeCategory = 'all', searchQuery = '', order = {};
 
         async function loadCatalog() {
             try {
                 const res = await fetch(CATALOG_URL, { cache: 'no-store' });
-                if (!res.ok) throw new Error('catalog fetch failed');
+                if (!res.ok) throw new Error('fail');
                 catalog = await res.json();
                 document.getElementById('shop-name').textContent = catalog.shop_name || 'Shop';
-                document.getElementById('shop-tagline').textContent =
-                    catalog.tagline || '⭐ Stars · 💳 карта · 🪙 USDT';
+                document.getElementById('shop-tagline').textContent = catalog.tagline || '';
                 catalog.products.forEach(p => { order[p.id] = 0; });
                 renderCategories();
                 renderProducts();
                 updateUI();
             } catch (e) {
                 document.getElementById('products').innerHTML =
-                    '<p class="error">Не удалось загрузить каталог.<br>Обновите страницу.</p>';
+                    '<p class="error">Не удалось загрузить каталог.<br>Обновите Mini App.</p>';
             }
         }
 
         const catsEl = () => document.getElementById('categories');
-
-        function scrollCatsBy(dx) {
-            const el = catsEl();
-            if (el) el.scrollBy({ left: dx, behavior: 'smooth' });
-        }
-
-        function scrollActiveCatIntoView() {
-            const el = catsEl();
-            if (!el) return;
-            const active = el.querySelector('.cat-btn.active');
-            if (active) {
-                active.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
-            }
-        }
+        function scrollCats(dx) { catsEl()?.scrollBy({ left: dx, behavior: 'smooth' }); }
 
         function renderCategories() {
             const el = catsEl();
-            const cats = catalog.categories || [];
             el.innerHTML = '';
-            const allBtn = document.createElement('button');
-            allBtn.className = 'cat-btn active';
-            allBtn.type = 'button';
-            allBtn.textContent = '🏪 Все';
-            allBtn.onclick = () => setCategory('all');
-            el.appendChild(allBtn);
-            cats.forEach(c => {
-                const btn = document.createElement('button');
-                btn.type = 'button';
-                btn.className = 'cat-btn';
-                btn.textContent = `${c.icon} ${c.name}`;
-                btn.dataset.id = c.id;
-                btn.onclick = () => setCategory(c.id);
-                el.appendChild(btn);
+            const all = document.createElement('button');
+            all.type = 'button'; all.className = 'cat-btn active';
+            all.textContent = '🏪 Все'; all.onclick = () => setCategory('all');
+            el.appendChild(all);
+            const hot = document.createElement('button');
+            hot.type = 'button'; hot.className = 'cat-btn';
+            hot.textContent = '🔥 Хиты'; hot.dataset.id = 'featured';
+            hot.onclick = () => setCategory('featured');
+            el.appendChild(hot);
+            (catalog.categories || []).forEach(c => {
+                const b = document.createElement('button');
+                b.type = 'button'; b.className = 'cat-btn';
+                b.textContent = `${c.icon} ${c.name}`; b.dataset.id = c.id;
+                b.onclick = () => setCategory(c.id);
+                el.appendChild(b);
             });
-            document.getElementById('cat-prev').onclick = () => scrollCatsBy(-160);
-            document.getElementById('cat-next').onclick = () => scrollCatsBy(160);
+            document.getElementById('cat-prev').onclick = () => scrollCats(-170);
+            document.getElementById('cat-next').onclick = () => scrollCats(170);
         }
 
         function setCategory(id) {
             activeCategory = id;
             document.querySelectorAll('.cat-btn').forEach(btn => {
                 const bid = btn.dataset.id || 'all';
-                btn.classList.toggle('active', (id === 'all' && !btn.dataset.id) || bid === id);
+                btn.classList.toggle('active',
+                    (id === 'all' && bid === 'all') || bid === id);
             });
-            scrollActiveCatIntoView();
+            catsEl()?.querySelector('.cat-btn.active')?.scrollIntoView({ inline: 'center', behavior: 'smooth' });
             renderProducts();
+        }
+
+        function productMatches(p) {
+            if (searchQuery) {
+                const q = searchQuery.toLowerCase();
+                const hay = `${p.title} ${p.description}`.toLowerCase();
+                if (!hay.includes(q)) return false;
+            }
+            if (activeCategory === 'featured') return !!p.featured;
+            if (activeCategory === 'all') return true;
+            return p.category === activeCategory;
         }
 
         function renderProducts() {
             const wrap = document.getElementById('products');
-            const list = (catalog.products || []).filter(p =>
-                activeCategory === 'all' || p.category === activeCategory
-            );
+            const list = (catalog.products || []).filter(productMatches);
             if (!list.length) {
-                wrap.innerHTML = '<p class="empty">В этой категории пока нет товаров</p>';
+                wrap.innerHTML = searchQuery
+                    ? '<p class="empty">Ничего не найдено</p>'
+                    : '<p class="empty">В этой категории пока пусто</p>';
                 return;
             }
             wrap.innerHTML = list.map(p => `
-                <div class="product-card" data-id="${p.id}">
+                <div class="product-card">
                     <div class="product-top">
                         <div class="product-icon">${p.icon || '📦'}</div>
-                        <div class="product-title">${p.title}</div>
+                        <div class="product-title">${p.title}${p.featured ? '<span class="badge-hot">ХИТ</span>' : ''}</div>
                     </div>
                     <div class="product-desc">${p.description}</div>
                     <div class="product-footer">
@@ -299,8 +239,7 @@
             wrap.querySelectorAll('.counter button').forEach(btn => {
                 btn.addEventListener('click', () => {
                     const item = btn.dataset.item;
-                    const delta = btn.dataset.action === 'plus' ? 1 : -1;
-                    order[item] = Math.max(0, (order[item] || 0) + delta);
+                    order[item] = Math.max(0, (order[item] || 0) + (btn.dataset.action === 'plus' ? 1 : -1));
                     if (tg.HapticFeedback) tg.HapticFeedback.impactOccurred('light');
                     updateUI();
                 });
@@ -309,12 +248,10 @@
 
         function getTotals() {
             if (!catalog) return { stars: 0, rub: 0, usdt: 0 };
-            return catalog.products.reduce((acc, p) => {
+            return catalog.products.reduce((a, p) => {
                 const q = order[p.id] || 0;
-                acc.stars += q * p.price_stars;
-                acc.rub += q * p.price_rub;
-                acc.usdt += q * p.price_usdt;
-                return acc;
+                a.stars += q * p.price_stars; a.rub += q * p.price_rub; a.usdt += q * p.price_usdt;
+                return a;
             }, { stars: 0, rub: 0, usdt: 0 });
         }
 
@@ -327,23 +264,13 @@
             const t = getTotals();
             document.getElementById('cart-total').innerHTML =
                 `${t.stars} ⭐<br>${t.rub} ₽ · ${t.usdt.toFixed(2)} USDT`;
-            if (t.stars > 0) {
-                tg.MainButton.setText('Оформить заказ');
-                tg.MainButton.show();
-            } else {
-                tg.MainButton.hide();
-            }
+            if (t.stars > 0) { tg.MainButton.setText('Оформить заказ'); tg.MainButton.show(); }
+            else tg.MainButton.hide();
         }
 
         function sendDataToBot() {
-            if (getTotals().stars === 0) {
-                tg.showAlert('Добавьте товары кнопкой «+»');
-                return;
-            }
-            if (!tg.sendData) {
-                tg.showAlert('Откройте магазин через кнопку бота');
-                return;
-            }
+            if (getTotals().stars === 0) { tg.showAlert('Добавьте товары «+»'); return; }
+            if (!tg.sendData) { tg.showAlert('Откройте через кнопку бота'); return; }
             tg.MainButton.showProgress();
             tg.sendData(JSON.stringify(order));
             tg.close();
@@ -353,6 +280,10 @@
         tg.MainButton.color = tg.themeParams.button_color || '#7c3aed';
         tg.MainButton.textColor = tg.themeParams.button_text_color || '#ffffff';
         tg.MainButton.hide();
+        document.getElementById('search').addEventListener('input', e => {
+            searchQuery = e.target.value.trim();
+            renderProducts();
+        });
         loadCatalog();
     </script>
 </body>
