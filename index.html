@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>andrewimm_shop</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background-color: #0d1117;
+            color: #c9d1d9;
+            margin: 0;
+            padding: 15px;
+        }
+        .header {
+            text-align: center;
+            padding: 15px 0;
+            border-bottom: 2px solid #21262d;
+            margin-bottom: 20px;
+        }
+        .header h1 {
+            color: #58a6ff;
+            font-size: 26px;
+            margin: 0 0 5px 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .product-card {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        .product-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #ffffff;
+            margin-bottom: 5px;
+        }
+        .product-desc {
+            font-size: 13px;
+            color: #8b949e;
+            line-height: 1.4;
+            margin-bottom: 15px;
+        }
+        .product-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .price {
+            font-size: 16px;
+            color: #58a6ff;
+            font-weight: bold;
+        }
+        .counter {
+            display: flex;
+            align-items: center;
+            background: #21262d;
+            border-radius: 8px;
+            padding: 4px;
+        }
+        .counter button {
+            background: #30363d;
+            color: #58a6ff;
+            border: 1px solid #30363d;
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .counter button:active {
+            background: #58a6ff;
+            color: #ffffff;
+        }
+        .counter span {
+            margin: 0 15px;
+            font-weight: bold;
+            font-size: 16px;
+            min-width: 20px;
+            text-align: center;
+            color: #ffffff;
+        }
+        .buy-btn {
+            background: #238636;
+            color: #ffffff;
+            border: 1px solid #2ea44f;
+            width: 100%;
+            padding: 14px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 25px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(35, 134, 54, 0.3);
+            transition: 0.2s;
+        }
+        .buy-btn:active {
+            background: #2ea44f;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>andrewimm_shop</h1>
+        <div style="color: #8b949e; font-size: 13px;">Магазин готовых решений для Roblox Studio</div>
+    </div>
+
+    <div class="product-card">
+        <div class="product-title">⚡ Скрипт: Clicker System (Bubble Gum)</div>
+        <div class="product-desc">Система кликов, кастомные множители (Multipliers) и удобная настройка геймплея.</div>
+        <div class="product-footer">
+            <div class="price">50 XTR</div>
+            <div class="counter">
+                <button onclick="changeQty('clicker', -1)">-</button>
+                <span id="clicker-qty">0</span>
+                <button onclick="changeQty('clicker', 1)">+</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="product-card">
+        <div class="product-title">💾 Скрипт: Лидерборд + DataStore</div>
+        <div class="product-desc">Автоматическое сохранение игровой валюты 'money' и статов игрока при выходе из плейса.</div>
+        <div class="product-footer">
+            <div class="price">30 XTR</div>
+            <div class="counter">
+                <button onclick="changeQty('save', -1)">-</button>
+                <span id="save-qty">0</span>
+                <button onclick="changeQty('save', 1)">+</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="product-card">
+        <div class="product-title">💎 Пак UI: Neon Bubble Style</div>
+        <div class="product-desc">Сочный комплект неонового интерфейса для кнопок, инвентаря и игрового магазина.</div>
+        <div class="product-footer">
+            <div class="price">75 XTR</div>
+            <div class="counter">
+                <button onclick="changeQty('gui', -1)">-</button>
+                <span id="gui-qty">0</span>
+                <button onclick="changeQty('gui', 1)">+</button>
+            </div>
+        </div>
+    </div>
+
+    <button class="buy-btn" onclick="sendDataToBot()">💳 Оформить заказ</button>
+
+    <script>
+        const tg = window.Telegram.WebApp;
+        tg.expand();
+
+        let order = {
+            clicker: 0,
+            save: 0,
+            gui: 0
+        };
+
+        function changeQty(item, val) {
+            order[item] = Math.max(0, order[item] + val);
+            document.getElementById(`${item}-qty`).innerText = order[item];
+        }
+
+        function sendDataToBot() {
+            if (order.clicker === 0 && order.save === 0 && order.gui === 0) {
+                alert("Выберите количество товара с помощью кнопки '+'");
+                return;
+            }
+            tg.sendData(JSON.stringify(order));
+            tg.close();
+        }
+    </script>
+</body>
+</html>
